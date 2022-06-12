@@ -10,10 +10,24 @@ const Expenses = (props) => {
     setFiltered(selectedFilter);
   };
 
+  /** Condition to filter year **/
+  const filteredExpenses = props.items.filter((filterYear) => {
+    if (filterYear.date.getFullYear().toString() === filtered) {
+      return true;
+    }
+  });
+
   return (
     <Card className="flex flex-col mx-auto bg-black max-w-4xl md:p-4 p-2 rounded-xl">
       <ExpenseFilter selected={filtered} onSelected={onSelectedFilter} />
-      {props.items.map((expense) => (<ExpenseItem key={expense.id} title={expense.title} amount={expense.amount}  date={expense.date}/> ))}
+      {filteredExpenses.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      ))}
     </Card>
   );
 };
