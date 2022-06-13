@@ -9,7 +9,7 @@ const ExpenseFilter = (props) => {
       <span className="text-sky-50 font-bold text-xl">
         <h1>Filter by year</h1>
       </span>
-      <div className="">
+      <div>
         <select
           value={props.selected}
           className="w-32 text-center h-10 px-2 text-xl font-bold rounded-lg"

@@ -26,7 +26,6 @@ const ExpenseForm = (props) => {
       date: new Date(enterDate),
     };
 
-    // console.log(expenseData);
     setEnterTitle("");
     setEnterAmount("");
     setEnterDate("");
