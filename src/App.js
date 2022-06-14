@@ -1,7 +1,6 @@
 // import logo from './logo.svg';
 import React, { useState } from "react";
 import "./App.css";
-import Chart from "./Components/Chart/Chart";
 import Expenses from "./Components/Expenses/Expenses";
 import NewExpense from "./Components/NewExpenses/NewExpense";
 
@@ -50,7 +49,6 @@ function App() {
     <>
       <h1 className="text-3xl font-bold underline">Let's Get Started</h1>
       <NewExpense onAddNewExpense={addNewExpenseData} />
-      <Chart />
       <Expenses items={expenses} />
     </>
   );
