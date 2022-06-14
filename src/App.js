@@ -47,7 +47,6 @@ function App() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Let's Get Started</h1>
       <NewExpense onAddNewExpense={addNewExpenseData} />
       <Expenses items={expenses} />
     </>
