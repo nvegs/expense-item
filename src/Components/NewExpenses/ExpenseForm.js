@@ -1,34 +1,24 @@
 import React, { useState } from "react";
 
 const ExpenseForm = (props) => {
-  const [enterTitle, setEnterTitle] = useState();
-  const [enterAmount, setEnterAmount] = useState();
-  const [enterDate, setEnterDate] = useState();
+  const [enterFormData, setFormData] = useState({});
 
-  const onChangeTitle = (e) => {
-    setEnterTitle(e.target.value);
-  };
-
-  const onChangeAmount = (e) => {
-    setEnterAmount(e.target.value);
-  };
-
-  const onChangeDate = (e) => {
-    setEnterDate(e.target.value);
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setFormData((initialFormData) => ({...initialFormData, [name]: value}));
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     const expenseData = {
-      title: enterTitle,
-      amount: enterAmount,
-      date: new Date(enterDate),
+      title: enterFormData.title,
+      amount: enterFormData.amount,
+      date: new Date(enterFormData.date),
     };
 
-    setEnterTitle("");
-    setEnterAmount("");
-    setEnterDate("");
+    setFormData({});
 
     props.onSaveExpenseData(expenseData);
   };
@@ -44,8 +34,9 @@ const ExpenseForm = (props) => {
             <label>Title</label>
             <input
               type="text"
-              value={enterTitle}
-              onChange={onChangeTitle}
+              value={enterFormData.title || ""}
+              name="title"
+              onChange={handleChange}
               className="w-80 h-10 rounded-md p-2"
             />
           </div>
@@ -54,8 +45,9 @@ const ExpenseForm = (props) => {
             <label>Amount</label>
             <input
               type="number"
-              value={enterAmount}
-              onChange={onChangeAmount}
+              value={enterFormData.amount || ""}
+              name="amount"
+              onChange={handleChange}
               className="w-80 h-10 rounded-md p-2"
             />
           </div>
@@ -64,8 +56,9 @@ const ExpenseForm = (props) => {
             <label>Date</label>
             <input
               type="Date"
-              value={enterDate}
-              onChange={onChangeDate}
+              value={enterFormData.date || ""}
+              name="date"
+              onChange={handleChange}
               min="2019-1-1"
               max="2022-12-01"
               className="w-80 h-10 rounded-md p-2"
