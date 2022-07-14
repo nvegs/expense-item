@@ -23,12 +23,19 @@ const ExpenseForm = (props) => {
     props.onSaveExpenseData(expenseData);
   };
 
+
+    
+
+
   return (
     <>
       <form
         onSubmit={submitHandler}
-        className="max-w-4xl mx-auto my-4 p-4 rounded-lg bg-[#a892ee]"
+        className="max-w-4xl mx-auto my-4 p-4 rounded-lg bg-[#a892ee] animate-slide_down"
       >
+        <>
+        
+        </>
         <div className="flex flex-wrap items-center font-bold">
           <div className="flex flex-col gap-4 mx-4 my-2">
             <label>Title</label>
@@ -67,11 +74,18 @@ const ExpenseForm = (props) => {
         </div>
 
         <div className="flex justify-end my-4">
-          <button className="text-sky-50 md:w-auto w-full border px-6 py-2 rounded-md bg-[#40005d]">
+          <button type="button" onClick={()=> (props.onSetCloseButton(false))} className="text-[#40005d] font-bold md:w-auto w-full mx-2 px-6 py-2 rounded-md border-[1px] border-[#40005d] bg-[#a892ee]">
+            Close
+          </button>
+          <button type="submit" className="text-sky-50 md:w-auto w-full border px-6 py-2 rounded-md bg-[#40005d]">
             Add Expenses
           </button>
         </div>
+        
       </form>
+      
+          
+      
     </>
   );
 };
